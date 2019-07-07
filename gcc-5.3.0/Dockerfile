@@ -1,7 +1,7 @@
 FROM alpine:3.4
-RUN echo http://dl-cdn.alpinelinux.org/alpine/v3.9/main/ >> /etc/apk/repositories
-RUN echo http://dl-cdn.alpinelinux.org/alpine/v3.9/community/ >> /etc/apk/repositories
-RUN apk add --no-cache gcc=5.3.0-r0 cmake=3.13.0-r0 git ruby ruby-rdoc perl make bash ca-certificates wget \
+RUN echo http://dl-cdn.alpinelinux.org/alpine/v3.9/main/ >> /etc/apk/repositories && \
+        echo http://dl-cdn.alpinelinux.org/alpine/v3.9/community/ >> /etc/apk/repositories && \
+        apk add --no-cache gcc=5.3.0-r0 cmake=3.13.0-r0 git ruby ruby-rdoc perl make bash ca-certificates wget \
         linux-headers build-base openssl-dev libc-dev \
         libxml2-dev libxslt-dev libffi-dev readline-dev jemalloc-dev readline-dev && \
 #       wget -O ruby-install-0.7.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.7.0.tar.gz && \
@@ -15,7 +15,7 @@ RUN apk add --no-cache gcc=5.3.0-r0 cmake=3.13.0-r0 git ruby ruby-rdoc perl make
         make uninstall && \
         cd / && \
         rm -rf ruby-install && \
-        apk del linux-headers build-base openssl-dev libc-dev libxml2-dev libxslt-dev libffi-dev jemalloc-dev
-RUN echo "gem: --no-document" > ~/.gemrc
-RUN gem install lcoveralls
-RUN git clone https://github.com/linux-test-project/lcov.git ./lcov -b v1.14 --depth 1 && cd lcov && make install && cd .. && rm -rf lcov
+        apk del linux-headers build-base openssl-dev libc-dev libxml2-dev libxslt-dev libffi-dev jemalloc-dev && \
+        echo "gem: --no-document" > ~/.gemrc && \
+        gem install lcoveralls && \
+        git clone https://github.com/linux-test-project/lcov.git ./lcov -b v1.14 --depth 1 && cd lcov && make install && cd .. && rm -rf lcov
