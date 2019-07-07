@@ -1,7 +1,7 @@
 FROM alpine:3.6
 RUN echo http://dl-cdn.alpinelinux.org/alpine/v3.9/main/ >> /etc/apk/repositories && \
         echo http://dl-cdn.alpinelinux.org/alpine/v3.9/community/ >> /etc/apk/repositories && \
-        apk add --no-cache gcc=6.3.0-r4 cmake=3.13.0-r0 git perl make bash ca-certificates wget \
+        apk add --no-cache gcc=6.3.0-r4 g++=6.3.0-r4 cmake=3.13.0-r0 git perl make bash ca-certificates wget \
         linux-headers build-base openssl-dev libc-dev \
         libxml2-dev libxslt-dev libffi-dev readline-dev jemalloc-dev readline-dev && \
 #       wget -O ruby-install-0.7.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.7.0.tar.gz && \
